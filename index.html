@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=JetBrains+Mono:wght@400;500&display=swap"
     />
     <style>
       :root {
@@ -42,6 +42,74 @@
         flex-direction: column;
         align-items: center;
         padding: 56px 24px 32px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Editorial flourishes */
+      .bg-watermark {
+        position: fixed;
+        bottom: -8vh;
+        right: -6vw;
+        height: clamp(360px, 78vh, 720px);
+        width: auto;
+        opacity: 0.045;
+        pointer-events: none;
+        z-index: 0;
+        transform: rotate(-8deg);
+      }
+
+      .running-head,
+      .colophon {
+        position: fixed;
+        left: 24px;
+        right: 24px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0;
+        animation: fadeIn 0.8s ease 0.6s forwards;
+      }
+
+      .running-head { top: 18px; }
+      .colophon { bottom: 18px; }
+
+      .running-head .rh-mark,
+      .colophon .col-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .running-head .rh-mark::before,
+      .colophon .col-mark::before {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: var(--ink-faint);
+      }
+
+      .colophon .col-mark::after {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: var(--ink-faint);
+      }
+
+      .colophon .col-mark::before {
+        display: none;
+      }
+
+      /* Stack all real content above the watermark */
+      .header, .cards, .page-footer {
+        position: relative;
+        z-index: 1;
       }
 
       .header-brand {
@@ -55,17 +123,16 @@
       }
 
       .brand-text {
-        font-family: "Fraunces", serif;
-        font-size: clamp(18px, 2.2vw, 26px);
-        font-weight: 400;
-        font-variation-settings: "opsz" 144;
-        letter-spacing: -0.018em;
+        font-family: "EB Garamond", serif;
+        font-size: clamp(20px, 2.4vw, 28px);
+        font-weight: 500;
+        letter-spacing: 0.005em;
         line-height: 1;
         color: var(--ink);
       }
 
       .brand-mark {
-        height: clamp(40px, 5vw, 60px);
+        height: clamp(32px, 4vw, 48px);
         width: auto;
         flex-shrink: 0;
         display: block;
@@ -236,7 +303,7 @@
         text-transform: uppercase;
         color: var(--ink-faint);
         text-align: center;
-        margin-top: 20px;
+        margin-top: 4px;
       }
 
       .chain-description {
@@ -245,6 +312,7 @@
         font-weight: 400;
         line-height: 1.55;
         color: var(--ink-soft);
+        text-align: center;
       }
 
       .card-footer {
@@ -321,6 +389,7 @@
       @media (max-width: 800px) {
         body { padding: 40px 16px 24px; }
         .header { margin-bottom: 56px; }
+        .running-head, .colophon, .bg-watermark { display: none; }
         .cards {
           grid-template-columns: 1fr;
           gap: 16px;
@@ -348,6 +417,15 @@
   </head>
 
   <body>
+    <div class="running-head" aria-hidden="true">
+      <span class="rh-mark">Mint Selector</span>
+      <span>MMXXVI</span>
+    </div>
+
+    <svg class="bg-watermark" aria-hidden="true" viewBox="320 220 385 580">
+      <path fill="#19191A" d="m659.32 235.41c-4.03-1.48-20.4-5.46-38.12-4.6-17.48 0.85-36.15 5.41-45.54 9.62-47.95 21.54-72.21 51.38-76.62 91.03l-22.19 204.67c-3.41 2.16-6.84 4.33-10.15 6.43-30.77 19.44-57.34 36.23-71.4 46.84-64.28 50.48-66.68 87.55-70.26 118.76-8.32 72.69 51.45 84.11 56.7 84.97v0.08c0.29 0.04 0.48 0.05 0.78 0.09 33.77 3.75 63.94-15.63 87.83-41.88 5.24-5.17 10.58-10.88 16.03-17.44 31.03-37.39 43.25-83.43 48.42-116.44v-0.02c2.4-15.32 3.28-27.84 3.83-35.35v-0.02l8.66-80c23.17-15.48 44.28-30.47 59.31-43.15 9.57-6.02 15.93-15.69 17.88-23.74 3.09-12.73-0.86-22.42-5.81-28.36-6.73-8.05-28.5-8.29-21.71 18.03 4.04 15.65-1.84 28.1-6.16 34.69-11.91 9.3-26.46 19.59-42.18 30.22l15.92-146.95c2.47-22.3 7.59-45.07 16.3-64.19 6.12-13.44 23.53-37.49 56.18-37.49 24.66 0 42.65 34.9 34.43 50.32-12.79 23.99 8.43 28.87 16.86 22.62 6.2-4.6 12.47-13.1 12.3-26.19-0.11-9.57-7.6-39.93-41.32-52.34zm-204.55 504.51c-1.66 16.12-22.69 30.96-34.28 35.82-12.12 5.09-37.04 5.03-35.41-8.69 1.64-13.73 16.98-156.62 16.98-156.62 0 0 1.43-8.6 4.64-12.97 2.95-4.01 6.82-9.38 13.01-13.5 14-9.32 32.11-20.77 52.07-33.39 1.24-0.79 2.52-1.59 3.79-2.39-0.03 0-19.12 175.61-20.8 191.74z"/>
+    </svg>
+
     <header class="header">
       <div class="header-brand">
         <svg class="brand-mark" viewBox="320 220 385 580" aria-hidden="true">
@@ -365,8 +443,8 @@
         <span class="ornament-line"></span>
       </div>
       <p class="subtitle">
-        The Forever Library minting protocol on three chains. Each with its own
-        fees, speed, and ecosystem. Choose your network to begin.
+        The Forever Library minting protocol.<br />
+        Choose your network to begin.
       </p>
     </header>
 
@@ -500,8 +578,8 @@
             />
           </svg>
           <span class="x">×</span>
-          <svg class="chain-mark" viewBox="0 87 230 230" aria-hidden="true">
-            <path fill="#0052FF" d="M13.82,316.8c-9.22,0-13.82-4.61-13.82-13.82V100.99c0-9.22,4.61-13.82,13.82-13.82h201.98c9.22,0,13.82,4.61,13.82,13.82v201.98c0,9.22-4.61,13.82-13.82,13.82H13.82Z"/>
+          <svg class="chain-mark" viewBox="0 0 2500 2500" aria-hidden="true">
+            <path fill="#0052FF" d="M1247.8,2500c691.6,0,1252.2-559.6,1252.2-1250C2500,559.6,1939.4,0,1247.8,0C591.7,0,53.5,503.8,0,1144.9h1655.1v210.2H0C53.5,1996.2,591.7,2500,1247.8,2500z"/>
           </svg>
         </div>
 
@@ -529,7 +607,12 @@
 
     <footer class="page-footer">
       <span>foreverlibrary.xyz · mint selector</span>
-      <a href="https://foreverlibrary.xyz">← foreverlibrary.xyz</a>
+      <a href="https://foreverlibrary.xyz">← foreverlibrary.xyz (V1)</a>
     </footer>
+
+    <div class="colophon" aria-hidden="true">
+      <span>Set in EB Garamond, Fraunces &amp; JetBrains Mono</span>
+      <span class="col-mark">Onchain · Forever</span>
+    </div>
   </body>
 </html>
