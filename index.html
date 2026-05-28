@@ -75,7 +75,7 @@
 
       /* Corner brackets — line graphics that accentuate the page corners */
       .corner-bracket {
-        position: fixed;
+        position: absolute;
         width: 64px;
         height: 64px;
         color: rgba(25, 25, 26, 0.55);
@@ -125,7 +125,7 @@
       .header {
         text-align: center;
         max-width: 720px;
-        margin-bottom: 80px;
+        margin-bottom: 56px;
       }
 
       .title {
@@ -135,7 +135,7 @@
         font-variation-settings: "opsz" 144, "SOFT" 50;
         letter-spacing: -0.025em;
         line-height: 0.95;
-        margin-bottom: 36px;
+        margin-bottom: 24px;
         opacity: 0;
         animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
       }
@@ -150,7 +150,7 @@
         align-items: center;
         justify-content: center;
         gap: 16px;
-        margin: 36px 0;
+        margin: 24px 0;
         opacity: 0;
         animation: fadeIn 0.6s ease 0.4s forwards;
       }
@@ -181,7 +181,7 @@
 
       .cards {
         width: 100%;
-        max-width: 1240px;
+        max-width: 1100px;
         margin-inline: auto;
         display: flex;
         flex-wrap: wrap;
@@ -197,7 +197,7 @@
       .card-soneium { animation-delay: 1.2s; }
 
       .card {
-        flex: 0 0 calc((100% - 56px) / 3);
+        flex: 0 0 280px;
         background: var(--paper);
         padding: 36px 32px 24px;
         text-decoration: none;
@@ -320,6 +320,7 @@
         font-family: "JetBrains Mono", monospace;
         font-size: 10px;
         color: var(--ink-faint);
+        min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -345,7 +346,7 @@
 
       .page-footer {
         width: 100%;
-        max-width: 1240px;
+        max-width: 1100px;
         margin-top: auto;
         padding-top: 14px;
         border-top: 1px solid var(--rule);
@@ -1008,29 +1009,7 @@
         </h2>
         <ul class="modal-list">
           <li>
-            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library" target="_blank" rel="noopener noreferrer">
-              <span class="modal-link-icon-wrap">
-                <svg class="modal-link-icon" viewBox="0 0 256 417" aria-hidden="true">
-                  <path fill="currentColor" d="M127.962 0L0 212.32l127.962 75.639L255.922 212.32z M127.961 312.187L255.921 236.585L127.961 416.905L0 236.585z"/>
-                </svg>
-              </span>
-              <span class="modal-link-name">Ethereum</span>
-              <span class="modal-link-tag">V1 · ERC-721</span>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-v2" target="_blank" rel="noopener noreferrer">
-              <span class="modal-link-icon-wrap">
-                <svg class="modal-link-icon" viewBox="0 0 256 417" aria-hidden="true">
-                  <path fill="currentColor" d="M127.962 0L0 212.32l127.962 75.639L255.922 212.32z M127.961 312.187L255.921 236.585L127.961 416.905L0 236.585z"/>
-                </svg>
-              </span>
-              <span class="modal-link-name">Ethereum</span>
-              <span class="modal-link-tag">V2 · ERC-1155</span>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-base" target="_blank" rel="noopener noreferrer">
+            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-base">
               <span class="modal-link-icon-wrap">
                 <svg class="modal-link-icon" viewBox="0 0 2500 2500" aria-hidden="true">
                   <path fill="currentColor" d="M1247.8,2500c691.6,0,1252.2-559.6,1252.2-1250C2500,559.6,1939.4,0,1247.8,0C591.7,0,53.5,503.8,0,1144.9h1655.1v210.2H0C53.5,1996.2,591.7,2500,1247.8,2500z"/>
@@ -1041,7 +1020,29 @@
             </a>
           </li>
           <li>
-            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-megaeth" target="_blank" rel="noopener noreferrer">
+            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library">
+              <span class="modal-link-icon-wrap">
+                <svg class="modal-link-icon" viewBox="0 0 256 417" aria-hidden="true">
+                  <path fill="currentColor" d="M127.962 0L0 212.32l127.962 75.639L255.922 212.32z M127.961 312.187L255.921 236.585L127.961 416.905L0 236.585z"/>
+                </svg>
+              </span>
+              <span class="modal-link-name">Ethereum</span>
+              <span class="modal-link-tag">V1 · ERC-721</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-v2">
+              <span class="modal-link-icon-wrap">
+                <svg class="modal-link-icon" viewBox="0 0 256 417" aria-hidden="true">
+                  <path fill="currentColor" d="M127.962 0L0 212.32l127.962 75.639L255.922 212.32z M127.961 312.187L255.921 236.585L127.961 416.905L0 236.585z"/>
+                </svg>
+              </span>
+              <span class="modal-link-name">Ethereum</span>
+              <span class="modal-link-tag">V2 · ERC-1155</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-megaeth">
               <span class="modal-link-icon-wrap">
                 <svg class="modal-link-icon" viewBox="0 0 105 105" aria-hidden="true">
                   <path fill="currentColor" d="M62.7534 81.6321C65.9781 81.6321 68.5825 79.0297 68.5825 75.8195C68.5825 72.6093 65.9781 70.0068 62.7534 70.0068C59.5536 70.0068 56.9492 72.6093 56.9492 75.8195C56.9492 79.0297 59.5536 81.6321 62.7534 81.6321Z"/>
@@ -1051,6 +1052,18 @@
                 </svg>
               </span>
               <span class="modal-link-name">MegaETH</span>
+              <span class="modal-link-tag">ERC-1155</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" rel="noopener noreferrer" href="https://opensea.io/collection/forever-library-soneium">
+              <span class="modal-link-icon-wrap">
+                <svg class="modal-link-icon" viewBox="0 0 141 141" aria-hidden="true">
+                  <path fill="currentColor" d="M79.019 107.825C66.3252 110.841 52.4038 107.4 42.5041 97.4951C29.7054 84.6977 27.2073 65.7083 36.4532 50.666C40.2713 44.4554 43.8981 40.7427 47.0315 37.622C59.9474 24.7568 83.6698 1.33914 83.6698 1.33914C61.5202 -3.04589 37.6622 3.33737 20.5026 20.5012C-6.83421 47.8352 -6.83421 92.1603 20.5026 119.494C28.9775 127.968 39.0808 133.809 49.8133 137.034L79.0252 107.825H79.019Z"/>
+                  <path fill="currentColor" d="M60.9827 32.17C73.6766 29.1541 87.5979 32.5955 97.4977 42.5004C110.296 55.2977 112.794 74.2872 103.549 89.3295C99.7305 95.54 96.1037 99.2528 92.9703 102.374C80.0544 115.239 56.332 138.656 56.332 138.656C78.4815 143.041 102.34 136.658 119.499 119.494C146.836 92.1603 146.836 47.8352 119.499 20.5013C111.024 12.0273 100.921 6.18673 90.1885 2.96118L60.9766 32.17H60.9827Z"/>
+                </svg>
+              </span>
+              <span class="modal-link-name">Soneium</span>
               <span class="modal-link-tag">ERC-1155</span>
             </a>
           </li>
