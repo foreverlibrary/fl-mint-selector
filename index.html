@@ -179,6 +179,28 @@
         animation: fadeIn 0.6s ease 0.5s forwards;
       }
 
+      .helper {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--ink-faint);
+        line-height: 1.6;
+        margin: 24px auto 0;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 0.6s ease 0.7s forwards;
+      }
+
+      .helper a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: opacity 0.2s ease;
+      }
+
+      .helper a:hover {
+        opacity: 0.7;
+      }
+
       .cards {
         width: 100%;
         max-width: 1100px;
@@ -666,6 +688,9 @@
       <p class="subtitle">
         The Forever Library minting protocol.<br />
         <strong>Choose your network to begin.</strong>
+      </p>
+      <p class="helper">
+        First time using this site? <a href="https://www.youtube.com/watch?v=d8NhDf_mt90" target="_blank" rel="noopener noreferrer">Watch a tutorial video here</a>
       </p>
     </header>
 
