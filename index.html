@@ -210,47 +210,19 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 28px;
-        margin-bottom: 40px;
-      }
-
-      .reveal-toggle {
-        position: relative;
-        z-index: 1;
-        display: block;
-        margin: 0 auto 40px;
-        padding: 6px 10px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 13px;
-        letter-spacing: 0.02em;
-        color: var(--ink-soft);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-        text-decoration-thickness: 1px;
-        transition: color 0.2s ease;
-      }
-
-      .reveal-toggle:hover {
-        color: var(--ink);
+        margin-bottom: 28px;
       }
 
       .cards-secondary {
-        display: none;
         margin-bottom: 80px;
-      }
-
-      .cards-secondary.is-visible {
-        display: flex;
       }
 
       .card-base { animation-delay: 0.6s; }
       .card-eth { animation-delay: 0.75s; }
       .card-tezos { animation-delay: 0.9s; }
-      .card-mega { animation-delay: 0.05s; }
-      .card-eth-v1 { animation-delay: 0.13s; }
-      .card-soneium { animation-delay: 0.21s; }
+      .card-mega { animation-delay: 1.05s; }
+      .card-eth-v1 { animation-delay: 1.2s; }
+      .card-soneium { animation-delay: 1.35s; }
 
       .card {
         flex: 0 0 280px;
@@ -655,9 +627,8 @@
         .corner-bracket, .bg-watermark, .bg-stripes { display: none; }
         .cards {
           gap: 16px;
-          margin-bottom: 48px;
+          margin-bottom: 16px;
         }
-        .reveal-toggle { margin-bottom: 28px; }
         .cards-secondary { margin-bottom: 48px; }
         .card { padding: 28px 24px 20px; flex: 0 0 100%; }
         .chain-title { font-size: 34px; }
@@ -875,16 +846,6 @@
         </div>
       </a>
     </main>
-
-    <button
-      class="reveal-toggle"
-      id="revealToggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="cardsSecondary"
-    >
-      Show other minting and network options.
-    </button>
 
     <div class="cards cards-secondary" id="cardsSecondary">
       <a href="https://megaeth.foreverlibrary.xyz"
@@ -1218,19 +1179,6 @@
             closeModal();
           }
         });
-
-        const revealToggle = document.getElementById("revealToggle");
-        const cardsSecondary = document.getElementById("cardsSecondary");
-        if (revealToggle && cardsSecondary) {
-          revealToggle.addEventListener("click", function () {
-            const willShow = !cardsSecondary.classList.contains("is-visible");
-            cardsSecondary.classList.toggle("is-visible", willShow);
-            revealToggle.setAttribute("aria-expanded", String(willShow));
-            revealToggle.textContent = willShow
-              ? "Hide other minting and network options."
-              : "Show other minting and network options.";
-          });
-        }
       })();
     </script>
   </body>
